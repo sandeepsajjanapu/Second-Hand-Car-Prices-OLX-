@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarSwap - Second Hand Car Prices</title>
+    <title>Contact Us - CarSwap</title>
     <style>
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #eef4f7d5;
-            color: rgb(1, 19, 19);
+            background-color: #096cbdf3;
+            color: #ffffff;
         }
 
         header {
-            background-color: rgb(50, 50, 56);
+            background-color: #1f1f1f;
             padding: 1rem 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             text-align: center;
@@ -21,7 +21,7 @@
         }
 
         header h1 {
-            color: #f7fbfc;
+            color: #ff8800;
             margin: 0;
         }
 
@@ -44,7 +44,7 @@
         }
 
         nav ul li a:hover {
-            color: #e7e3de;
+            color: #ff8800;
         }
 
         section {
@@ -58,8 +58,27 @@
         }
 
         h2 {
-            color: #f3f0ec;
+            color: #ff8800;
             margin-bottom: 1rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            transform: scale(1.05);
         }
 
         .btn {
@@ -70,6 +89,7 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -96,21 +116,6 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
-        #home, #about, #contact {
-            animation: fadeIn 1.5s ease-in;
-        }
-
-        .pulse {
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
     </style>
 </head>
 <body>
@@ -118,31 +123,30 @@
         <h1>CarSwap</h1>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
-    <section id="home">
-        <div class="container">
-            <h2 style="color:darkgray">Know Your Car Price</h2>
-            
-            <p>Find out the value of your second-hand car with ease.</p>
-            <a href="/check" class="btn pulse">Get Your Car Price</a>
-        </div>
-    </section>
-    <section id="about">
-        <div class="container">
-            <h2>About CarSwap</h2>
-            <p>Accurate and up-to-date car prices at your fingertips.</p>
-        </div>
-    </section>
     <section id="contact">
         <div class="container">
             <h2>Contact Us</h2>
-            <p>Have questions? Reach out to us!</p>
-            <a href="mailto:info@carswap.com" class="btn">Email Us</a>
+            <form action="/contact" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <select name="country" required>
+                    <option value="" disabled selected>Country</option>
+                    <!-- Add options for countries -->
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UK">UK</option>
+                    <!-- Add more countries as needed -->
+                </select>
+                <input type="text" name="state" placeholder="State" required>
+                <textarea name="message" placeholder="Message" rows="4" required></textarea>
+                <button type="submit" class="btn">Submit</button>
+            </form>
         </div>
     </section>
     <footer>
