@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Car Price - CarCost</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: slideInDown 1s ease-out;
+        }
+
+        header h1 {
+            color: #0acff1;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0acff1;
+        }
+
+        section {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #0acff1;
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.3s;
+            background-color: #1f1f1f;
+            color: #ffffff;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            transform: scale(1.05);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            background-color: #0acff1;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0acff1;
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CarSwap</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="prediction">
+        <div class="container">
+            <h2>Predict Your Car Price</h2>
+            <form action="/check" method="POST">
+                <select name="make" required>
+                    <option value="" disabled selected>Make</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Suzuki">Suzuki</option>
+                    <option value="Daihatsu">Daihatsu</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="KIA">KIA</option>
+                    <option value="Changan">Changan</option>
+                    <option value="FAW">FAW</option>
+                    <option value="Mercedes">Mercedes</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                </select>
+                <select name="model" required>
+                    <option value="" disabled selected>Model</option>
+                    <option value="Passo">Passo</option>
+                    <option value="Ravi">Ravi</option>
+                    <option value="Bolan">Bolan</option>
+                    <option value="Move">Move</option>
+                    <option value="Swift">Swift</option>
+                    <option value="Wagon R">Wagon R</option>
+                    <option value="Mira">Mira</option>
+                    <option value="City IDSI">City IDSI</option>
+                    <option value="Cultus VXR">Cultus VXR</option>
+                    <option value="Every">Every</option>
+                    <option value="Corolla XLI">Corolla XLI</option>
+                    <option value="Baleno">Baleno</option>
+                    <option value="City Vario">City Vario</option>
+                    <option value="Terios Kid">Terios Kid</option>
+                    <option value="Civic Prosmetic">Civic Prosmetic</option>
+                    <option value="City IVTEC">City IVTEC</option>
+                    <option value="Santro">Santro</option>
+                    <option value="Corrolla Altis">Corrolla Altis</option>
+                    <option value="City Aspire">City Aspire</option>
+                    <option value="Mehran VXR">Mehran VXR</option>
+                    <option value="Cuore">Cuore</option>
+                    <option value="Pajero Mini">Pajero Mini</option>
+                    <option value="Picanto">Picanto</option>
+                    <option value="Alto">Alto</option>
+                    <option value="Karvaan">Karvaan</option>
+                    <option value="X-PV">X-PV</option>
+                    <option value="Hijet">Hijet</option>
+                    <option value="Ek Wagon">Ek Wagon</option>
+                    <option value="Altis Grande">Altis Grande</option>
+                    <option value="E Class">E Class</option>
+                    <option value="Yaris">Yaris</option>
+                    <option value="Lancer">Lancer</option>
+                    <option value="Corolla GLI">Corolla GLI</option>
+                    <option value="Joy">Joy</option>
+                    <option value="Civic Oriel">Civic Oriel</option>
+                    <option value="Classic">Classic</option>
+                    <option value="Spectra">Spectra</option>
+                    <option value="V2">V2</option>
+                    <option value="Minicab Bravo">Minicab Bravo</option>
+                    <option value="Corolla Assista">Corolla Assista</option>
+                    <option value="Alsvin">Alsvin</option>
+                    <option value="C Class">C Class</option>
+                    <option value="Minica">Minica</option>
+                    <option value="Exclusive">Exclusive</option>
+                    <option value="Civic VTi">Civic VTi</option>
+                    <option value="Cervo">Cervo</option>
+                    <option value="Sportage">Sportage</option>
+                    <option value="Corolla Axio">Corolla Axio</option>
+                    <option value="Every Wagon">Every Wagon</option>
+                    <option value="Liana">Liana</option>
+                    <option value="Civic EXi">Civic EXi</option>
+                    <option value="Surf">Surf</option>
+                    <option value="Mehran VX">Mehran VX</option>
+                    <option value="Civic VTi Oriel">Civic VTi Oriel</option>
+                    <option value="Khyber">Khyber</option>
+                    <option value="Cultus VXL">Cultus VXL</option>
+                    <option value="Prius">Prius</option>
+                    <option value="ISIS">ISIS</option>
+                </select>
+                <select name="year" required>
+                    <option value="" disabled selected>Year</option>
+                    <option value="2021">2021</option>
+                    <option value="2018">2018</option>
+                    <option value="2015">2015</option>
+                    <option value="2013">2013</option>
+                    <option value="2011">2011</option>
+                    <option value="2020">2020</option>
+                    <option value="2016">2016</option>
+                    <option value="2004">2004</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2023">2023</option>
+                    <option value="2014">2014</option>
+                    <option value="2019">2019</option>
+                    <option value="2009">2009</option>
+                    <option value="2017">2017</option>
+                    <option value="2012">2012</option>
+                    <option value="2005">2005</option>
+                    <option value="2003">2003</option>
+                    <option value="2010">2010</option>
+                    <option value="2022">2022</option>
+                    <option value="2002">2002</option>
+                    <option value="2001">2001</option>
+                    <option value="2000">2000</option>
+                    <option value="1993">1993</option>
+                    <option value="1989">1989</option>
+                    <option value="2024">2024</option>
+                </select>
+                <input type="number" name="kms_driven" placeholder="KM's Driven" required>
+                <select name="fuel" required>
+                    <option value="" disabled selected>Fuel Type</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="CNG">CNG</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Diesel">Diesel</option>
+                </select>
+                <select name="registration_city" required>
+                    <option value="" disabled selected>Registration City</option>
+                    <option value="Unregistered">Unregistered</option>
+                    <option value="Karachi">Karachi</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Sindh">Sindh</option>
+                    <option value="Faisalabad">Faisalabad</option>
+                    <option value="Islamabad">Islamabad</option>
+                    <option value="Sialkot">Sialkot</option>
+                    <option value="Gujranwala">Gujranwala</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Multan">Multan</option>
+                    <option value="Rawalpindi">Rawalpindi</option>
+                    <option value="Bahawalpur">Bahawalpur</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Rahimyar Khan">Rahimyar Khan</option>
+                    <option value="Chishtian Mandi">Chishtian Mandi</option>
+                    <option value="Chiniot">Chiniot</option>
+                    <option value="Wazirabad">Wazirabad</option>
+                    <option value="Sahiwal">Sahiwal</option>
+                    <option value="Gujrat">Gujrat</option>
+                    <option value="Abbottabad">Abbottabad</option>
+                    <option value="Khanewal">Khanewal</option>
+                    <option value="Peshawar">Peshawar</option>
+                    <option value="Sargodha">Sargodha</option>
+                    <option value="Bannu">Bannu</option>
+                    <option value="Nowshera">Nowshera</option>
+                    <option value="Kasur">Kasur</option>
+                    <option value="Arifwala">Arifwala</option>
+                    <option value="Jhang Sadar">Jhang Sadar</option>
+                    <option value="Dera Ghazi Khan">Dera Ghazi Khan</option>
+                    <option value="Mardan">Mardan</option>
+                    <option value="Attock">Attock</option>
+                    <option value="Larkana">Larkana</option>
+                    <option value="Unknown">Unknown</option>
+                    <option value="Jhelum">Jhelum</option>
+                    <option value="Khanpur">Khanpur</option>
+                    <option value="Wah">Wah</option>
+                    <option value="Okara">Okara</option>
+                    <option value="Bhakkar">Bhakkar</option>
+                    <option value="Sheikhüpura">Sheikhüpura</option>
+                    <option value="Swat">Swat</option>
+                    <option value="Dera Ismail Khan">Dera Ismail Khan</option>
+                    <option value="Khushab">Khushab</option>
+                    <option value="Bhimber">Bhimber</option>
+                    <option value="Mansehra">Mansehra</option>
+                    <option value="Mirpur">Mirpur</option>
+                    <option value="Quetta">Quetta</option>
+                    <option value="Vehari">Vehari</option>
+                    <option value="Hafizabad">Hafizabad</option>
+                    <option value="Charsadda">Charsadda</option>
+                    <option value="Toba Tek singh">Toba Tek singh</option>
+                    <option value="Jaranwala">Jaranwala</option>
+                    <option value="Pirmahal">Pirmahal</option>
+                    <option value="Haripur">Haripur</option>
+                    <option value="Mirpur Khas">Mirpur Khas</option>
+                    <option value="Bahawalnagar">Bahawalnagar</option>
+                    <option value="Swabi">Swabi</option>
+                    <option value="Dadu">Dadu</option>
+                    <option value="Mianwali">Mianwali</option>
+                    <option value="Sukkar">Sukkar</option>
+                    <option value="Badin">Badin</option>
+                    <option value="Nawabshah">Nawabshah</option>
+                </select>
+                <select name="car_documents" required>
+                    <option value="" disabled selected>Car Documents</option>
+                    <option value="Original">Original</option>
+                    <option value="Duplicate">Duplicate</option>
+                </select>
+                <select name="assembly" required>
+                    <option value="" disabled selected>Assembly</option>
+                    <option value="Imported">Imported</option>
+                    <option value="Local">Local</option>
+                </select>
+                <select name="transmission" required>
+                    <option value="" disabled selected>Transmission</option>
+                    <option value="Automatic">Automatic</option>
+                    <option value="Manual">Manual</option>
+                </select>
+                <button type="submit" class="btn">Predict Price</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction Result - CarSwap</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h2 {
+            color: #0acff1;
+            margin-bottom: 1rem;
+        }
+
+        .car-animation {
+            width: 100px;
+            height: 50px;
+            background: linear-gradient(45deg, #0acff1, #ffdd57);
+            position: relative;
+            border-radius: 10px;
+            animation: drive 3s infinite linear;
+        }
+
+        .car-animation::before,
+        .car-animation::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #000;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -10px;
+        }
+
+        .car-animation::before {
+            left: 10px;
+        }
+
+        .car-animation::after {
+            right: 10px;
+        }
+
+        @keyframes drive {
+            0% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(50%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .result {
+            font-size: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s forwards 3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="header">Your Predicted Car Price</h2>
+        <div class="car-animation" id="car-animation"></div>
+        <div class="result" id="price">
+            Estimated Price: {{ price }}
+        </div>
+    </div>
+</body>
+</html>
