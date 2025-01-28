@@ -8,7 +8,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-image: url('glowing_car_background_image.jpg'); /* Ensure this path is correct */
+            background-image: url('/static/glowing_car_background_image.jpg'); /* Ensure this path is correct */
             background-size: cover; /* Make the background image cover the entire viewport */
             background-repeat: no-repeat; /* Prevent the background from repeating */
             background-position: center; /* Center the background image */
@@ -19,7 +19,7 @@
         header {
             background-color: rgba(50, 50, 56, 0.8); /* Add transparency to show the background */
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 5px rgba(214, 94, 94, 0.932);
             text-align: center;
             animation: slideInDown 1s ease-out;
         }
@@ -42,7 +42,7 @@
         }
 
         nav ul li a {
-            color: #ffffff;
+            color: #faf3f3fa;
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -57,12 +57,12 @@
         }
 
         .container {
-            width: 80%;
+            width: 20%;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background for text readability */
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: rgba(207, 247, 250, 0.897); /* Add a semi-transparent background for text readability */
+            padding: 0.5rem;
+            border-radius: 2px;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
         }
 
         h2 {
@@ -89,8 +89,8 @@
             background-color: rgba(31, 31, 31, 0.9);
             text-align: center;
             padding: 1rem 0;
-            box-shadow: 0 -2px 10px rgba(248, 246, 246, 0.932);
-            position: fixed;
+            box-shadow: 0 -2px 2px rgba(214, 94, 94, 0.932);
+            position: none;
             bottom: 0;
             width: 100%;
         }
@@ -126,9 +126,9 @@
         <h1>CarCost</h1>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/"><b>Home</b></a></li>
+                <li><a href="/about"><b>About</b></a></li>
+                <li><a href="/contact"><b>Contact Us</b></a></li>
             </ul>
         </nav>
     </header>
